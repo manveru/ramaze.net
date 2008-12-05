@@ -1,0 +1,286 @@
+body
+  :background #f3f3f2 url(/images/base/1x425_gradient-bkg3.png) repeat-x
+  :font-family "Bitstream Vera Sans", Georgia, serif
+  //:font-family Verdana, Geneva, Arial, Helvetica, Meiryo, sans-serif
+  :color #333
+a
+  :color #000
+  :text-decoration none
+  &:active, &:hover
+    :color #fff
+  img
+    :border none
+
+#header, #content, #footer, #billboard, #promo, #headline
+  :clear both
+
+#wrapper
+  :min-width 800px
+  :max-width 940px
+  :margin 0 auto
+
+#header_container
+  :min-width 800px
+  :max-width 940px
+  :height 80px
+  :margin 0px auto
+  #logo
+    :float left
+    img
+      :border 0
+  #menu
+    :float right
+    li
+      :display inline
+    #language
+      :text-align right
+      a
+        :margin 0 5px
+    //use line-height instead of margin/padding
+    #nav
+      a
+        :padding 5px 20px
+        :background #333
+        :color #aaa
+        :-moz-border-radius 1em
+        :border-radius 1em
+        &:focus, &:hover
+          :color #000
+          :background #f2f2f2
+        &:active
+          :position relative
+          :top 1px
+      a.current
+        :color #000
+        :background #d9d9d9
+
+#footer
+  :text-align center
+  :font-size 90%
+  :margin 15px auto
+  //:float left
+  :min-width 800px
+  :max-width 940px
+  //:width 950px
+
+pre.espresso_libre
+  :-moz-border-radius 1em
+
+pre
+  :background #ededed
+  :border 1px solid #adadad
+  :padding 1em
+  :-moz-border-radius 0.5em
+  p
+    :margin 0
+  code
+    :font
+      //:family Terminus, Screen, Monospace
+      :family Monospace
+      //, Terminus, Screen, Monospace
+      :size 140%
+    :color #000088
+
+.clear
+  :clear both
+  :background-color #d9d9d9
+
+// Home
+#billboard
+  :padding 30px 0
+  :border 1px solid #bbb
+  :-moz-border-radius 1em
+  :height 260px
+  :width 870px
+  :margin 0 auto
+  #copies
+    :text-align right
+    :margin 30px 10px
+    :width 385px
+    :height 200px
+    :float left
+    :font-family Sans
+    h1
+      :font
+        :size 200%
+        :weight bold
+      :padding 20px 0
+      :margin 0
+      :color #000033
+    dl
+      :color #353535
+      :margin 0 0 10px 0
+    dt
+      :font
+        :size 200%
+        :weight bold
+
+      :color #555
+    dd
+      :margin 0 0 10px 5px
+  #image
+    :float left
+    :text-align center
+    :width 445px
+    :margin 95px 10px 0 10px
+
+#promo
+  :text-align center
+  :margin 15px auto 25px auto
+  :width 876px
+  :height 220px
+  :border-spacing 0.5em
+  dl
+    :float left
+    :width 196px
+    :height 200px
+    :text-align center
+    :background url(/images/base/1x220_promo-gradient-bkg.png) repeat-x
+    :border 1px solid #ccc
+    :padding 10px 5px
+    :margin 0 5px
+    :-moz-border-radius 1em
+    dt
+      :font-weight bold
+      :font-size 120%
+    dd
+      :color #555
+      :height 40px
+      :font-size 100%
+      :margin 0 5px
+  img
+    :margin-top 5px
+
+#headline
+  :width 850px
+  :height 340px
+  :border-top 1px solid #d9d9d9
+  :margin 0 auto
+  :padding 10px 0
+  h2
+    :font
+      :size 150%
+    :background url('/images/base/26x26_rss-feed.png') no-repeat
+    :height 26px
+    :padding 0 0 0 31px
+  #news
+    :margin 10px 0 10px 30px
+    ul
+      :margin-left 25px
+  #patches
+    :float left
+    :width 390px
+    :margin 10px 0 10px 30px
+    ul
+      :margin-left 25px
+  #ml
+    :float left
+    :width 390px
+    :margin 10px 0 10px 30px
+    ul
+      :margin-left 25px
+
+#main
+  :-moz-border-radius 1em
+  :border 1px solid #ddd
+  :float left
+  :min-width 750px
+  :max-width 940px
+  :min-height 500px
+  :padding 10px 25px
+
+.learn, .examples, .getting-started, .get
+  :padding 25px
+  :margin 50px 40px 0 40px
+  :border 1px solid #bbb
+  a
+    :color #148fcc
+    :text-decoration none
+    &:active, &:hover
+      :text-decoration underline
+  p, ul, ol, dl, .annotation, blockquote, pre, h3
+    :width 640px
+    :margin-left auto
+    :margin-right auto
+  p
+    :font-size 140%
+    :margin-top 0.5em
+    :margin-bottom 0.5em
+  p.annotation
+    :text-align right
+    :font-size 100%
+  strong
+    :background #ffffb2
+    :font-weight normal
+  h2
+    :border-bottom 2px solid silver
+    :border-right 1px solid silver
+    :padding 8px 0 0 25px
+    :color #fff
+    :font-size 220%
+    :width 678px
+    :margin 20px auto
+    :background #555
+    :-moz-border-radius 10px
+
+ul#nav
+  :margin 25px auto
+  :height 140px
+  :width 640px
+  li
+    :float left
+    :height 60px
+    :margin 0 20px
+    :padding 20px 0 0 70px
+    :font-size 155%
+    :display inline
+  li#getting
+    :background url('/images/test/blue.png') no-repeat
+  li#examples
+    :background url('/images/test/stock.png') no-repeat
+  li#casts
+    :background url('/images/test/youtube.png') no-repeat
+  li#rdoc
+    :background url('/images/test/weather.png') no-repeat
+
+.get
+  h1
+    :background transparent url('/images/test/triforce64.png') no-repeat
+    :padding-left 70px
+    :height 64px
+    :line-height 64px
+
+.features
+  h1#features
+    :display none
+  h2, p, ul, pre, dl
+    :float right
+    :min-width 540px
+    //:width 640px
+    :max-width 640px
+  ul
+    :margin 0
+    :padding 0
+  #submenu, .maruku_toc
+    :float left
+    :min-width 200px
+    :max-width 240px
+    // overwrite
+    ul
+      :float left
+      :min-width 200px
+      :max-width 240px
+    li
+      :padding 10px
+      :background #aaa
+      :list-style none
+      :line-heigh 36px
+      a
+        :color #333
+        :display block
+        :background url('/images/test/12-12-submenu_arrow.png') no-repeat scroll 170px 50%
+      &:hover
+        :background #d5d5d5
+
+.hidden
+  //:display none

@@ -1,0 +1,108 @@
+html_use_syntax: true
+
+# Getting Started #
+
+If you haven't installed ramaze yet, follow the [installation
+guide](/get) and come back quick!
+
+Folks who want to see the code without installing, jump to
+[github](http://github.com/manveru/ramaze).
+
+Are you ready? Now Let's see 'Hello, World' in Ramaze.
+
+## Hello, Ramaze ##
+    require 'rubygems'
+    require 'ramaze'
+    class MainController < Ramaze::Controller
+      def index
+        'Hello, World!'
+      end
+    end
+    Ramaze.start
+{:lang=ruby}
+
+paste the above code, save it as 'hello.rb' then
+
+    $ ruby hello.rb
+
+open your browser, point it to [http://localhost:7000](http://localhost:7000)
+
+insert screenshot.hello-world.png here
+
+Simple, isn't it? No ./script/generate or any special preparation is
+needed. Ramaze is Ruby program, so you just write a normal ruby code.
+
+## Light, Camera, Action! ##
+
+The index action is called by default when no other URL is
+provided. Below, accessing http://localhost:7000 invokes this index
+method and the return value, "Hello World" is rendered to the browser.
+
+    class MainController < Ramaze::Controller
+      def index
+        # http://localhost:7000
+        "Hello, World!"
+      end
+    end
+{:lang=ruby}
+
+Controllers can be mounted onto different urls with the map
+directive. A mapped controller will only respond to requests that are
+prefixed with the supplied mapping. Below,
+http://localhost:7000/another/hello will invoke AnotherController's
+method hello.
+
+    class AnotherController < Ramaze::Controller
+      map '/another'
+ 
+      def hello
+        # http://localhost:7000/another/hello
+        "Hello Another"
+      end
+    end
+{:lang=ruby}
+
+Your action methods can accept arguments in two ways- get/post
+variables and via the url. For example, if you accessed
+http://localhost:7000/add/A/B?number=one
+
+    class MainController < Ramaze::Controller
+      def add(first, second)
+        # http://localhost:7000/add/A/B?number=one
+ 
+        # request.get? == true
+        # first == 'A'
+        # second == 'B'
+        # request['number'] == 'one'
+      end
+    end
+{:lang=ruby}
+
+Default values for method params, like with def add first, second,
+third = "C", will work as expected.
+
+Finally, use two underscores instead of a forward slash, or
+define_method for actions that contain a period or slash
+
+    class MainController < Ramaze::Controller
+      def admin__setup
+         # http://localhost:7000/admin/setup
+      end
+ 
+      define_method 'style.css' do
+         # http://localhost:7000/style.css
+      end
+ 
+      define_method 'admin/app.js' do
+        # http://localhost:7000/admin/app.js
+      end
+    end
+{:lang=ruby}
+
+## But, What about ORM? ##
+Let us show you quick glance Model in ramaze with sqlite...
+## 15min blog tutorial? ##
+Yes, we have it!
+
+Read comments on this topic (0)
+{: .annotation}

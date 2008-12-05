@@ -1,0 +1,44 @@
+!!!
+!!! XML
+%html
+  %head
+    %title= "Ramaze : #@current"
+    = css_for *%w[reset uv master ruby]
+    
+  %body
+    #wrapper
+      #header_container
+        #logo
+          %a{:href => '/'}
+            %img{:src => '/images/base/ra3.png', :alt => 'Ramaze, Web Framework for Rubyists'}
+        #menu
+          #language
+            :maruku
+              * [English](/)
+              * [Deutsch](/)
+              * [Portuguese](/)
+              * [日本語](/)
+
+          #nav
+            %ul
+              // TODO: move to helper
+              - %w[home features learn get community github].each do |ref|
+                %li
+                - href = ref == 'home' ? '' : ref
+                //- href = 'http://github.com/manveru/ramaze' if ref == 'github'
+                - if @current == href
+                  %a.current{:href => '/' + href}= ref.capitalize
+                - else
+                  %a{:href => '/' + href}= ref.capitalize
+
+            //%ul
+            //  %li Getting Started
+            //  %li Examples
+            //  %li submenu
+
+      %div#content{:class => @current}~ @content
+      #footer
+        Powered by ramaze :-)
+        //Full source code is available at here.
+        %br/
+        &copy; 2006-2008 Michael Fellinger, some rights reserved
