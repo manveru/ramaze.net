@@ -4,7 +4,8 @@
   %head
     %title= "Ramaze : #@current"
     = css_for *%w[reset uv master ruby]
-    
+    = js_for 'jquery'
+
   %body
     #wrapper
       #header_container
@@ -25,20 +26,14 @@
               - %w[home features learn get community github].each do |ref|
                 %li
                 - href = ref == 'home' ? '' : ref
-                //- href = 'http://github.com/manveru/ramaze' if ref == 'github'
                 - if @current == href
                   %a.current{:href => '/' + href}= ref.capitalize
                 - else
                   %a{:href => '/' + href}= ref.capitalize
 
-            //%ul
-            //  %li Getting Started
-            //  %li Examples
-            //  %li submenu
-
       %div#content{:class => @current}~ @content
       #footer
         Powered by ramaze :-)
-        //Full source code is available at here.
+        // Full source code is available at here.
         %br/
         &copy; 2006-2008 Michael Fellinger, some rights reserved

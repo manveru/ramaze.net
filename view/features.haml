@@ -1,9 +1,11 @@
 :maruku
   # Features
+
   * ToC
   {:toc}
 
   ## Use what you want
+
   Because of ramaze's **modular design**, You are free to choose
 
   * ORMs
@@ -11,14 +13,15 @@
   * Adapters
   * Loggers
 
-  ## ORMs {: .hidden}
+  ## ORMs
+
   * Sequel
   * Data Mapper
   * Active Record
   * M4DBI
-  {: .hidden}
 
-  ## Template Engines {: .hidden}
+  ## Template Engines
+
   * Amrita2
   * Erubis
   * Tenjin
@@ -30,9 +33,9 @@
   * Ezamar
   * Nagoro
   * XSLT
-  {: .hidden}
 
-  ## Adapters {: .hidden}
+  ## Adapters
+
   * Thin
   * Mongrel
   * Evented Mongrel
@@ -40,36 +43,34 @@
   * WEBrick
   * CGI
   * FCGI
-  {: .hidden}
 
-  ## Loggers {: .hidden}
+  ## Loggers
+
   * LogHub
   * Informer
   * Analogger
   * Syslog
   * KNotify
   * XOSD
-  {: .hidden}
 
-  ## Keep it simple {: .hidden}
+  ## Keep it simple
 
   Ramaze has minimum dependencies that **only needs Ruby** to run. Of
   course you can take advantage of several wonderful libraries, but
   Ramaze is built in a way to be run on any basic setup.
-  {: .hidden}
 
-  ## Ruby Implementations {: .hidden}
+  ## Ruby Implementations
+
   * MRI 1.8 and 1.9
   * JRuby 1.x
   * Rubinius
-   {: .hidden}
 
-  ## Everything documented {: .hidden}
-  classes, modules, methods, configuration...
+  ## Everything documented
+
+  Classes, Modules, Methods, Configuration...
 
   Through **100% documentation** Ramaze gives the developer easy and solid
   understanding of the underlying concepts and functionality.
-  {: .hidden}
 
       # One iteration of rotate will look for files that changed since the last
       # iteration and will try to #safe_load it.
@@ -82,19 +83,17 @@
       #     Ramaze::Log.info "reloading source"
       #     Thread.main[:sourcereload].rotate
       #   end
-  {: class=hidden lang=ruby}
+  {: lang=ruby}
 
 
-  ## Fully BDD {: .hidden}
+  ## Fully BDD
 
   Ramaze has a very complete set of so-called specifications built by RSpec.
   These specs define the way Ramaze has to behave.
-  {: .hidden}
 
   The specs are checked every time a new patch is pushed into the repository,
   deciding whether the changes the patch applies are valid and don\'t
   break the framework.
-  {: .hidden}
 
       describe "get files" do
         behaves_like 'http'
@@ -108,4 +107,4 @@
             static_image = File.read("spec/ramaze/public\#{image_path}")
           end
           ......
-  {: class=hidden lang=ruby}
+  {: lang=ruby}
