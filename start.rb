@@ -1,23 +1,13 @@
 $KCODE = 'u'
 
 require 'ramaze'
+require 'haml' # not sure why i need this.
 require 'maruku'
 
 require 'controller/init'
 
 THEME = 'espresso_libre'
 
-
-#   def reset
-#     respond File.open('view/css/reset.css')
-#   end
-
-#   def ruby
-#     respond File.open('view/css/ruby.css')
-#   end
-#end
-
-# Ramaze::Rewrite[/^(.*)\.css$/] = '%s'
 Ramaze::Global.content_type = 'text/html; charset=utf-8'
 Ramaze.start :run_loose => ($0 != __FILE__), :adapter => :thin, :port => 7000
 

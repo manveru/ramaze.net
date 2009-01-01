@@ -16,21 +16,23 @@
           #language
             :maruku
               * [English](/)
-              * [Deutsch](/)
-              * [Portuguese](/)
-              * [日本語](/)
+              * [Deutsch](/#)
+              * [Portuguese](/#)
+              * [日本語](/#)
 
           #nav
             %ul
               // TODO: move to helper
-              - %w[home features learn get community github].each do |ref|
+              - %w[home features learn get community].each do |ref|
                 %li
                 - href = ref == 'home' ? '' : ref
                 - if @current == href
                   %a.current{:href => '/' + href}= ref.capitalize
                 - else
                   %a{:href => '/' + href}= ref.capitalize
-
+              %li
+                %a{:href => 'http://github.com/manveru/ramaze'} github
+              
       %div#content{:class => @current}~ @content
       #footer
         Powered by ramaze :-)
