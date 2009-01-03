@@ -1,6 +1,6 @@
 body
   :background #f3f3f2 url(/images/base/1x425_gradient-bkg3.png) repeat-x
-  :font-family "Bitstream Vera Sans", Georgia, serif
+  font-family: "Bitstream Vera Sans", Georgia, serif
   //:font-family Verdana, Geneva, Arial, Helvetica, Meiryo, sans-serif
   :color #333
 a
@@ -93,7 +93,7 @@ pre
   :height 260px
   :width 870px
   :margin 0 auto
-  #copies
+  #bblist
     :text-align right
     :margin 30px 10px
     :width 385px
@@ -107,17 +107,18 @@ pre
       :padding 20px 0
       :margin 0
       :color #000033
-    dl
+    div
       :color #353535
       :margin 0 0 10px 0
-    dt
-      :font
-        :size 200%
-        :weight bold
-
-      :color #555
-    dd
-      :margin 0 0 10px 5px
+      .main
+        :font
+          :size 200%
+          :weight bold
+        :color #555
+        :margin 0px
+      .subtitle
+        :font
+          :size 100%
   #image
     :float left
     :text-align center
