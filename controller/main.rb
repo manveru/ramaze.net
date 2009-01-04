@@ -6,9 +6,9 @@ class MainController < Controller
     @current = Ramaze::Action.current.name
     @menu = [
       { :text => 'Home',      :href => '/',                                },
+      { :text => 'Download',  :href => '/download',                        },
       { :text => 'Features',  :href => '/features',                        },
       { :text => 'Learn',     :href => '/learn',                           },
-      { :text => 'Download',  :href => '/download',                        },
       { :text => 'Community', :href => '/community',                       },
       { :text => 'Code',      :href => 'http://github.com/manveru/ramaze', },
     ]
