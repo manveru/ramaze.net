@@ -8,7 +8,7 @@ class MainController < Controller
       { :text => 'Home',      :href => '/',                                },
       { :text => 'Features',  :href => '/features',                        },
       { :text => 'Learn',     :href => '/learn',                           },
-      { :text => 'Download',  :href => '/get',                             },
+      { :text => 'Download',  :href => '/download',                        },
       { :text => 'Community', :href => '/community',                       },
       { :text => 'Code',      :href => 'http://github.com/manveru/ramaze', },
     ]
