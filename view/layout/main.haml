@@ -22,16 +22,9 @@
 
           #nav
             %ul
-              // TODO: move to helper
-              - %w[home features learn get community].each do |ref|
+              - @menu.each do |item|
                 %li
-                - href = ref == 'home' ? '' : ref
-                - if @current == href
-                  %a.current{:href => '/' + href}= ref.capitalize
-                - else
-                  %a{:href => '/' + href}= ref.capitalize
-              %li
-                %a{:href => 'http://github.com/manveru/ramaze'} Code
+                  %a{ :href => item[ :href ], :class => item[ :class ] }= item[ :text ]
 
       %div#content{:class => @current}~ @content
       #footer
