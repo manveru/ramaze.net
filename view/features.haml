@@ -7,12 +7,7 @@
 
   ## Use what you want
 
-  Because of ramaze's **modular design**, You are free to choose
-
-  * ORMs
-  * Template Engines
-  * Adapters
-  * Loggers
+  Because of ramaze's modular design, you are free to choose.
 
   ## ORMs
 
@@ -21,7 +16,7 @@
   * Active Record
   * M4DBI
 
-  ## Template Engines
+  ## Templating Engines
 
   * Amrita2
   * Erubis
@@ -37,18 +32,22 @@
 
   ## Adapters
 
-  * Thin
   * Mongrel
   * Evented Mongrel
-  * Swifiplied Mongrel
+  * Swiftiplied Mongrel
   * WEBrick
-  * CGI
   * FCGI
+  * CGI
+  * SCGI
+  * LiteSpeed
+  * Thin
+  * Ebb
 
   ## Loggers
 
   * LogHub
   * Informer
+  * Growl
   * Analogger
   * Syslog
   * KNotify
@@ -56,15 +55,17 @@
 
   ## Keep it simple
 
-  Ramaze has minimum dependencies that **only needs Ruby** to run. Of
-  course you can take advantage of several wonderful libraries, but
-  Ramaze is built in a way to be run on any basic setup.
+  Ramaze has minimum dependencies, many applications will require only
+  [Ruby](http://ruby-lang.org) and [Rack](http://rack.rubyforge.org) to run. 
+  Of course you can take advantage of several wonderful libraries and
+  deployment options (webservers, proxies), but Ramaze is built in a
+  lightweight manner to eliminate waste.
 
   ## Ruby Implementations
 
-  * MRI 1.8 and 1.9
-  * JRuby 1.x
-  * Rubinius
+  * [MRI](http://ruby-lang.org) 1.8.x and 1.9.1
+  * [JRuby](http://jruby.codehaus.org/) 1.x
+  * [Rubinius](http://rubini.us/)
 
   ## Everything documented
 
@@ -89,23 +90,27 @@
 
   ## Fully BDD
 
-  Ramaze has a very complete set of so-called specifications built by RSpec.
+  Ramaze has a very complete set of test specifications built by
+  [Bacon](http://github.com/chneukirchen/bacon/tree/master).
   These specs define the way Ramaze has to behave.
 
   The specs are checked every time a new patch is pushed into the repository,
   deciding whether the changes the patch applies are valid and don\'t
   break the framework.
 
-      describe "get files" do
-        behaves_like 'http'
 
-        it "binary" do
-          image_path = '/favicon.ico'
-          if RUBY_VERSION >= '1.9.0'
-            static_image = File.open("spec/ramaze/public\#{image_path}",
-                                   'r:ASCII'){|f| f.read}
-          else
-            static_image = File.read("spec/ramaze/public\#{image_path}")
-          end
-          ......
+      describe MainController do
+        behaves_like 'http', 'xpath'
+        ramaze
+
+        it 'should show start page' do
+          got = get('/')
+          got.status.should == 200
+          got.header['Content-Type'].should == 'text/html'
+          got.at('//title').text.strip.should == MainController.new.index
+        end
+      end
   {: lang=ruby}
+  The behaves\_like declaration enables a specification to inherit shared
+  behaviors.
+  For more information, see the Bacon documentation.
