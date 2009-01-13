@@ -7,7 +7,7 @@
 
   ## Use what you want
 
-  Because of ramaze's modular design, you are free to choose.
+  Because of Ramaze's modular design, you are free to use your favourite technologies and tools.
 
   ## ORMs
 
@@ -55,11 +55,11 @@
 
   ## Keep it simple
 
-  Ramaze has minimum dependencies, many applications will require only
-  [Ruby](http://ruby-lang.org) and [Rack](http://rack.rubyforge.org) to run. 
-  Of course you can take advantage of several wonderful libraries and
+  Ramaze's dependencies are kept to a bare minimum.  Many applications will require only
+  [Ruby](http://ruby-lang.org) and [Rack](http://rack.rubyforge.org) to run.
+  Of course, you can take advantage of several wonderful libraries and
   deployment options (webservers, proxies), but Ramaze is built in a
-  lightweight manner to eliminate waste.
+  lightweight manner to eliminate the unnecessary.
 
   ## Ruby Implementations
 
@@ -90,13 +90,12 @@
 
   ## Fully BDD
 
-  Ramaze has a very complete set of test specifications built by
+  Ramaze has a very complete set of test specifications written with
   [Bacon](http://github.com/chneukirchen/bacon/tree/master).
   These specs define the way Ramaze has to behave.
 
   The specs are checked every time a new patch is pushed into the repository,
-  deciding whether the changes the patch applies are valid and don\'t
-  break the framework.
+  ensuring the changes the patch applies don\'t break the framework.
 
 
       describe MainController do
@@ -111,6 +110,7 @@
         end
       end
   {: lang=ruby}
+
   The behaves\_like declaration enables a specification to inherit shared
   behaviors.
   For more information, see the Bacon documentation.
