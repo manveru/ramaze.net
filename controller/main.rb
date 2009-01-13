@@ -16,4 +16,43 @@ class MainController < Controller
     item[ :class ] = 'current'
   end
 
+  private
+
+  def show_feed(desc, link)
+    cache = Ramaze::Cache.feed
+
+    if content = cache[link]
+      content
+    else
+      content = build_feed(link, desc)
+      cache.store(link, content, :ttl => 600)
+    end
+
+    content
+  end
+
+  def build_feed(link, desc)
+    feed = FeedConvert.parse(open(link))
+
+    b = Builder::XmlMarkup.new
+
+    b.div(:class => 'feed') do |div|
+      div.h2 do |h2|
+        h2.a(feed.title, :href => feed.link)
+        h2.a(:href => link) do |a|
+          a.img(:src => '/images/base/20x20_rss-feed.png')
+        end
+      end
+
+      b.ul do
+        feed.items.map do |item|
+          b.li do
+            b.a(item.title, :href => item.link)
+          end
+        end
+      end
+    end
+
+    b.target!
+  end
 end
