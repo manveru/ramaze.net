@@ -14,7 +14,7 @@ class FeedConvert
     end
   end
 
-  class Item < Struct.new(:id, :link, :title, :author, :content)
+  class Item < Struct.new(:id, :link, :title, :author, :content, :time)
   end unless defined?(FeedConvert::Item)
 
   class AtomFeed
@@ -44,6 +44,7 @@ class FeedConvert
         item.title   = e.at(:title).inner_text
         item.author  = e.at('author/name').inner_text
         item.content = e.at(:content).inner_text
+        item.time    = Time.parse(e.at(:updated).inner_text)
         item
       end
     end
@@ -77,6 +78,7 @@ class FeedConvert
         item.title   = i.at(:title).inner_text
         item.author  = i.at(:author).inner_text.strip.gsub(/\s+/, ' ')
         item.content = Time.parse(i.at(:pubDate).inner_text)
+        item.time = Time.parse(i.at(:pubDate).inner_text)
         item
       end
     end
