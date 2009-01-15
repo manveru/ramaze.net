@@ -3,14 +3,8 @@
 
   # Getting Started #
 
-  If you haven't installed ramaze yet, follow the [installation
-  guide](/get) and return to this page (didn't we already ask you 
-  to install?).
-
-  Folks who want to dig right into the source code without installing, 
-  jump to [github](http://github.com/manveru/ramaze).
-
-  Are you ready? Now Let's see 'Hello, World' in Ramaze.
+  If you haven't installed Ramaze yet, follow the [installation
+  guide](/download) and return to this page.
 
   ## Hello, Ramaze ##
 
@@ -24,55 +18,59 @@
       Ramaze.start
   {:lang=ruby}
 
-  paste the above code, save it as `hello.rb` then
+  Put the above code in a file like 'hello.rb', then
 
       $ ruby hello.rb
 
-  open your browser, point it to [http://localhost:7000](http://localhost:7000)
-
-  insert screenshot.hello-world.png here
+  In your browser visit [http://localhost:7000](http://localhost:7000)
 
   Simple, isn\'t it? No ./script/generate or any special preparation is
-  needed. Ramaze is Ruby program, so you just write a normal ruby code.
+  needed.  Ramaze applications are Ruby programs, so you just write normal
+  Ruby code.
 
-  ## Light, Camera, Action! ##
+  ## Lights, Camera, Action! ##
 
-  The index action is called by default when no other URL is
-  provided. Below, accessing http://localhost:7000 invokes this index
-  method and the return value, "Hello World" is rendered to the browser.
+  The index action is called by default when no path is
+  provided in the URI beyond the hostname.
+  Below, accessing [http://localhost:7000](http://localhost:7000)
+  invokes this index method and the return value, "Hello World" is rendered to
+  the browser.
 
       class MainController < Ramaze::Controller
+        # http://localhost:7000
         def index
-          # http://localhost:7000
           "Hello, World!"
         end
       end
   {:lang=ruby}
 
-  Controllers can be mounted onto different urls with the map
+  Controllers can be mounted onto different URL paths with the map
   directive. A mapped controller will only respond to requests that are
   prefixed with the supplied mapping. Below,
   http://localhost:7000/another/hello will invoke AnotherController's
-  method hello.
+  method <code>hello</code>.
 
       class AnotherController < Ramaze::Controller
         map '/another'
-   
+
+        # http://localhost:7000/another/hello
         def hello
-          # http://localhost:7000/another/hello
-          "Hello Another"
+          "Hello from Another!"
         end
       end
   {:lang=ruby}
 
-  Your action methods can accept arguments in two ways- get/post
-  variables and via the url. For example, if you accessed
-  http://localhost:7000/add/A/B?number=one
+  Your action methods can accept arguments in two ways
+
+  1. GET or POST variables
+  2. As slash-separated parameters in the URL.
+
+  For example:
 
       class MainController < Ramaze::Controller
         def add(first, second)
           # http://localhost:7000/add/A/B?number=one
-   
+
           # request.get? == true
           # first == 'A'
           # second == 'B'
@@ -81,33 +79,7 @@
       end
   {:lang=ruby}
 
-  Default values for method params, like with def add first, second,
-  third = "C", will work as expected.
-
-  Finally, use two underscores instead of a forward slash, or
-  define_method for actions that contain a period or slash
-
-      class MainController < Ramaze::Controller
-        def admin__setup
-           # http://localhost:7000/admin/setup
-        end
-   
-        define_method 'style.css' do
-           # http://localhost:7000/style.css
-        end
-   
-        define_method 'admin/app.js' do
-          # http://localhost:7000/admin/app.js
-        end
-      end
-  {:lang=ruby}
-
-  ## But, What about ORM? ##
-  Ramaze is ORM agnostic.  You may use any, or none.  Helpers exist to make integration
-  with certain helpers easier (sequel, Og, others); contributions from users which we always
-  welcome.
-
-  ## 15min blog tutorial? ##
-  Yes, we have it!  
-  [15 minute blog tutorial](http://rubyists.com/15-minute-ramaze-blog) by the rubyists
+  Default values for method parameters, like with
+  <code>def add( first, second, third = "C" )</code>,
+  will work as expected.
 
