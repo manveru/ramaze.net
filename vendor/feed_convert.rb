@@ -76,9 +76,10 @@ class FeedConvert
         item.id      = i.at(:guid).inner_text
         item.link    = i.at(:link).inner_text
         item.title   = i.at(:title).inner_text
-        item.author  = i.at(:author).inner_text.strip.gsub(/\s+/, ' ')
+        author_node  = i.at(:author)
+        item.author  = author_node ? author_node.inner_text.strip.gsub(/\s+/, ' ') : ''
         item.content = Time.parse(i.at(:pubDate).inner_text)
-        item.time = Time.parse(i.at(:pubDate).inner_text)
+        item.time    = Time.parse(i.at(:pubDate).inner_text)
         item
       end
     end
