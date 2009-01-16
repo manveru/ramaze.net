@@ -47,6 +47,7 @@ class MainController < Controller
       b.ul do
         feed.items.map do |item|
           b.li do
+            b.span( item.time.strftime( '%Y-%m-%d' ), :class => 'date' )
             b.a(item.title, :href => item.link)
           end
         end
