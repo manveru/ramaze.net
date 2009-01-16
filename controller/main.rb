@@ -41,38 +41,50 @@ class MainController < Controller
   end
 
   def build_feed(link, desc, is_twitter = false)
-    feed = FeedConvert.parse(open(link))
-
     b = Builder::XmlMarkup.new
 
     b.div(:class => 'feed') do |div|
-      div.h2 do |h2|
-        h2.a(feed.title, :href => feed.link)
-        h2.a(:href => link) do |a|
-          a.img(:src => '/images/base/20x20_rss-feed.png')
-        end
-      end
+      begin
+        Timeout::timeout( 10 ) do
+          feed = FeedConvert.parse(open(link))
 
-      b.ul do
-        feed.items.map do |item|
-          b.li do
-            if is_twitter
-              b.span( item.time.strftime( '%Y-%m-%d' ), :class => 'date' )
-              title = item.title.gsub( /^ramazenews: /, '' )
-              title.scan( /\S+/ ) { |word|
-                if word =~ %r{^http://}
-                  url = lengthen_url(word)
-                  b.a( "#{url} ", :href => url )
+          div.h2 do |h2|
+            h2.a(feed.title, :href => feed.link)
+            h2.a(:href => link) do |a|
+              a.img(:src => '/images/base/20x20_rss-feed.png')
+            end
+          end
+
+          b.ul do
+            feed.items.map do |item|
+              b.li do
+                if is_twitter
+                  b.span( item.time.strftime( '%Y-%m-%d' ), :class => 'date' )
+                  title = item.title.gsub( /^ramazenews: /, '' )
+                  title.scan( /\S+/ ) { |word|
+                    if word =~ %r{^http://}
+                      url = lengthen_url(word)
+                      b.a( "#{url} ", :href => url )
+                    else
+                      b.span( "#{word} " )
+                    end
+                  }
                 else
-                  b.span( "#{word} " )
+                  b.span( item.time.strftime( '%Y-%m-%d' ), :class => 'date' )
+                  b.a(item.title, :href => item.link)
                 end
-              }
-            else
-              b.span( item.time.strftime( '%Y-%m-%d' ), :class => 'date' )
-              b.a(item.title, :href => item.link)
+              end
             end
           end
         end
+      rescue Timeout::Error
+        div.h2 do |h2|
+          h2.a(desc, :href => link)
+          h2.a(:href => link) do |a|
+            a.img(:src => '/images/base/20x20_rss-feed.png')
+          end
+        end
+        b.span('(feed unreachable)')
       end
     end
 
