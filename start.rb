@@ -11,16 +11,5 @@ require 'vendor/feed_convert'
 THEME = 'espresso_libre'
 
 Ramaze::Cache.add(:feed)
-Ramaze::Global.content_type = 'text/html; charset=utf-8'
-Ramaze.start :run_loose => ($0 != __FILE__), :adapter => :thin, :port => 7000
-
-#  private
-#   def source(name)
-#     file = "source/#{name}"
-#     ultraviolet(fille, :style => THEME)
-#   end
-
-#   def uv(name = THEME)
-#     css = ultraviolet_css(name)
-#     respond File.open(css)
-#   end
+# Ramaze::Global.content_type = 'text/html; charset=utf-8'
+Ramaze.start(:adapter => :thin, :port => 7000) if __FILE__ == $0

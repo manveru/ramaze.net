@@ -1,9 +1,8 @@
 class MainController < Controller
-
-  layout '/layout/main'
+  layout 'main'
 
   before_all do
-    @current = Ramaze::Action.current.name
+    @current = Ramaze::Current.action.name.sub(/^\//, '')
     @menu = [
       { :text => 'Home',      :href => '/',                                },
       { :text => 'Download',  :href => '/download',                        },
@@ -13,6 +12,8 @@ class MainController < Controller
       { :text => 'Code',      :href => 'http://github.com/manveru/ramaze', },
     ]
     item = @menu.find { |item| item[ :href ] == "/#{@current}" } || @menu[ 0 ]
+    p :current => @current
+    p :item => item
     item[ :class ] = 'current'
   end
 
@@ -34,7 +35,7 @@ class MainController < Controller
   def lengthen_url(url)
     require 'open-uri'
     require 'json'
-    open( "http://www.longurlplease.com/api/v1.1?q=#{ CGI.escape( url ) }" ) do |http|
+    open( "http://www.longurlplease.com/api/v1.1?q=#{ u( url ) }" ) do |http|
       hash = JSON.parse(http.read)
       hash.values[0] || url
     end
@@ -45,7 +46,7 @@ class MainController < Controller
 
     b.div(:class => 'feed') do |div|
       begin
-        Timeout::timeout( 10 ) do
+        Timeout::timeout( 11 ) do
           feed = FeedConvert.parse(open(link))
 
           div.h2 do |h2|
