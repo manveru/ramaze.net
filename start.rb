@@ -1,9 +1,6 @@
-$KCODE = 'u'
-
 require 'ramaze'
-require 'haml' # not sure why i need this.
 require 'maruku'
-require 'builder'
+require 'nokogiri'
 
 require 'controller/init'
 require 'vendor/feed_convert'

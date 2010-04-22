@@ -1,11 +1,11 @@
-require 'hpricot'
 require 'open-uri'
+require 'nokogiri'
 
 class FeedConvert
   def self.parse(doc)
-    h = Hpricot(doc, :xml => true)
+    h = Nokogiri::XML(doc)
 
-    if feed = h.at('/feed[@xmlns="http://www.w3.org/2005/Atom"]')
+    if feed = h.at('/atom:feed', 'atom' => 'http://www.w3.org/2005/Atom')
       AtomFeed.new.parse(feed)
     elsif rss = h.at('/rss[@version=2.0]')
       RSS2Feed.new.parse(rss)

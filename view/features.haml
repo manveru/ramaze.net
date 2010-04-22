@@ -1,9 +1,8 @@
 :maruku
   # Features
 
-  <!--
   * ToC
-  {:toc} -->
+  {:toc}
 
   ## Use what you want
 
@@ -79,22 +78,8 @@
 
   Classes, Modules, Methods, Configuration...
 
-  Through **100% documentation** Ramaze gives the developer easy and solid
+  Through extensive documentation Ramaze gives the developer easy and solid
   understanding of the underlying concepts and functionality.
-
-      # One iteration of rotate will look for files that changed since the last
-      # iteration and will try to #safe_load it.
-      # This method is quite handy if you want direct control over when your
-      # code is reloaded.
-      #
-      # Usage example:
-      #
-      #   trap :HUP do
-      #     Ramaze::Log.info "reloading source"
-      #     Thread.main[:sourcereload].rotate
-      #   end
-  {: lang=ruby}
-
 
   ## Fully BDD
 
@@ -104,21 +89,3 @@
 
   The specs are checked every time a new patch is pushed into the repository,
   ensuring the changes the patch applies don\'t break the framework.
-
-
-      describe MainController do
-        behaves_like 'http', 'xpath'
-        ramaze
-
-        it 'should show start page' do
-          got = get('/')
-          got.status.should == 200
-          got.header['Content-Type'].should == 'text/html'
-          got.at('//title').text.strip.should == MainController.new.index
-        end
-      end
-  {: lang=ruby}
-
-  The behaves\_like declaration enables a specification to inherit shared
-  behaviors.
-  For more information, see the Bacon documentation.
